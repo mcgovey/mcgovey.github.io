@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Kevin McGovern's Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-flatly.css" media="screen" />
+    <style>
+    /* ==========================================================================
+    Inline critical CSS to increase performance on page load times
+    ========================================================================== */
+    /* ==========================================================================
+    Preloader Style
+    ========================================================================== */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999999;
+        background: #24242a;
+    }
+    .preloader i {
+        color: #fff;
+        position: absolute;
+        font-size: 36px;
+        line-height: 36px;
+        top: 50%;
+        left: 50%;
+        height: 36px;
+        width: 36px;
+        margin-top: -15px;
+        margin-left: -15px;
+        display: inline-block;
+    }
+    /* ==========================================================================
+    Background image
+    ========================================================================== */
+    body {
+        background-position: center;
+        background-size   : cover;
+        background-repeat : no-repeat;
+        background-color  : #cccccc;
+    }
+    /* ==========================================================================
+    Image for circle at top of page
+    ========================================================================== */
+    .circleImg {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 250px;
+        opacity: 1.0;
+        background: #E6E7ED;
+        -moz-border-radius: 125px;
+        -webkit-border-radius: 125px;
+        background-position:50% 50%;
+        background-size: cover;
+        background-repeat:no-repeat;
+    }
+    /* ==========================================================================
+    Make overlay semi-transparent
+    ========================================================================== */
+    #fullWrapper{
+        background-color: rgba(245, 245, 245, 0.9);
+    }
+    /* ==========================================================================
+    Make google styles the default font family
+    ========================================================================== */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+    }
+    p, div {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .skillLink {
+        color: black;
+    }
+    #innerDocNav{
+      margin: 30px 0;
+      border: #bbb 1px solid;
+      border-radius: 10px;
+    }
+    .skillsHeaders {
+      margin-left: 20px;
+    }
+    .flexContainer {
+      display:                 flex;
+      display:                 -webkit-flex; /* Safari 8 */
+      flex-wrap:               wrap;
+      -webkit-flex-wrap:       wrap;         /* Safari 8 */
+      justify-content:         center;
+      -webkit-justify-content: center;       /* Safari 8 */
+      margin: 15px 0;
+    }
+    .flexItem{
+      margin: auto;  /* Magic! */
+    }
+    /* Small screens */
+    @media all and (max-width: 500px) {
+      .flexContainer {
+        /* On small screens use vertical items instead of horizontal */
+        flex-direction:        column;
+        justify-content:       center;
+      }
+    }
+    #cvDetails li.list-group-item.active {
+      margin-top: 10px;
+    }
+    div.tooltip { 
+      position      : absolute;
+      text-align    : center;
+      width         : 150px;
+      padding       : 2px;
+      font          : 12px sans-serif;
+      background    : lightgrey;
+      border        : 0px;
+      border-radius : 8px;
+      pointer-events: none;
+    }
+    .yAxis.gantt line {
+      display       : none;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/temp_img.css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <!-- Preloader
+	============================================= -->
+    <div class="preloader"><i class="fa fa-circle-o-notch fa-spin fa-2x"></i></div>
+    <!-- Nav
+	============================================= -->
+
+    <!-- Welcome
+	============================================= -->
+    <section id="welcome">
+      <div class="container">
+        <div class="panel panel-default" id="fullWrapper"  data-spy="scroll" data-target="#innerDocNav">
+          <div class="panel-body">
+            <div id="sectHeader">
+              <div class="circleImg" id="nay"></div>
+              <h1 class="text-center">Kevin McGovern</h1>
+              <h4 class="text-center">Data Visualization Expert</h4>
+              <div id="profileLinks" class="flexContainer"></div>
+
+              <div id="about"></div>
+            </div>
+
+            <div id="sectSkills">
+              <h3 class="text-center">Skills and Interests</h3>
+
+              <h4 class="skillsHeaders text-center">Technologies Kevin is Most Interested In</h4>
+              <div class="row" id="skillsInterestsRow"></div>
+              <hr class="sep">
+
+              <h3 class="skillsHeaders text-center">Skills</h3>
+              <div id="skillsVizDiv"></div>
+            </div>
+
+            <div id="sectExperience">
+              <h3 class="text-center">Experience</h3>
+              <div id="cvGannt"></div>
+              <h4 class="text-center">Experience Details</h4>
+              <ul class="list-group" id="cvDetails"></ul>
+            </div>
+            <div id="sectProjects">
+              <h3 class="text-center">Other Projects</h3>
+            </div>
+            <div id="sectFooter">
+              <h6 class="text-center"><a href="https://github.com/mcgovey/d3-interactive-profile">Designed and Developed by Kevin McGovern</a></h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+  <!-- Moment.js for date handling -->
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+
+  <!-- D3 Library JS -->
+  <script src="//d3js.org/d3.v4.min.js"></script>
+
+  <!-- D3 Scale Library -->
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+  <!-- Local js -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/drawSkills.js"></script>
+  <script src="assets/js/profile.js"></script>
+  </body>
+</html>
