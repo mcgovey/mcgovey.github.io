@@ -1,3 +1,21 @@
 .cards, .cards.well {
 	height: 200px;
 }
+.thumbimgDiv {
+	width: 50%;
+}
+.thumbimg {
+	width: 100%;
+}
+.footer {
+	height: 60px;
+	background-color: #f8f8f8;
+}
+
+.footer > .container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.container .text-muted {
+	margin: 20px 0;
+}
